@@ -1,4 +1,4 @@
-from PyaiVS import model_bulid,virtual_screen
+from script import model_bulid,virtual_screen
 model_bulid.running('./dataset/abcg2.csv',
                     out_dir='./dataset',
                     run_type='param',
@@ -14,3 +14,5 @@ virtual_screen.model_screen(model='SVM',
                             screen_file='./database/base.csv',
                             sep=';',
                             smiles_col='smiles')
+
+

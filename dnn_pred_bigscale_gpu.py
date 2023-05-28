@@ -17,7 +17,7 @@ from PyaiVS.feature_create import create_des
 import torch
 
 torch.set_num_threads(3)
-e= open('enamine_26_2.csv','a+')
+e= open('enamine_26_1.csv','a+')
 def run_an_eval_epoch(model, data_loader, args):
     f = open(args['output'], 'w+')
     f.write('cano_smiles,pred_prop\n')
@@ -84,7 +84,7 @@ def screen(file='', sep=',', models=None, prop=0.5, smiles_col='smiles', out_dir
         run_an_eval_epoch(best_model, loader, args)
 
 
-path = '/data/jianping/bokey/enamine/26-2'
+path = '/data/jianping/bokey/enamine/26-1'
 file_count = 0
 for file in os.listdir(path)[::-1]:
     file = os.path.join(path,file)
@@ -95,6 +95,6 @@ for file in os.listdir(path)[::-1]:
     screen(models='/data/jianping/bokey/OCAICM/dataset/aurorab/model_save/DNN/cla_ECFP4_cluster_dataset_0.2390_256_256_128_0.0003_early_stop.pth',
        file=file,
        prop=0.8,
-       out_dir='/data/jianping/bokey/OCAICM/dataset/aurorab/bigscale/26-2', smiles_col=0, tasks=1,now_time=now_time)
+       out_dir='/data/jianping/bokey/OCAICM/dataset/aurorab/bigscale/26-1', smiles_col=0, tasks=1,now_time=now_time)
     end_time = time.time()
     e.write('{},{}\n'.format(file.split('/')[-1],end_time-now_time))
