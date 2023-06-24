@@ -144,7 +144,7 @@ def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, se
                 p.join()
         elif os.path.isfile(screen_file):
             print(out_dir, screen_file)
-            dl_screener.screen(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
+            script.dl_screener.screen(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
                                smiles_col=smiles_col)
         else:
             print('What\'s this ?')
