@@ -1,8 +1,8 @@
 import os
 import shutil
 from script import compute_info
-from script import data_utils
-from script import run_model,run_result
+import data_utils
+import run_model,run_result
 os.environ['PYTHONHASHSEED'] = str(42)  # 为了禁止hash随机化，使得实验可复现
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":16:8"

@@ -1,9 +1,9 @@
 import os
 import multiprocessing as mp
 import pandas as pd
-from script import ml_screener
-from script import dl_screener
-from script import dnn_screener
+import ml_screener
+import dl_screener
+import dnn_screener
 
 
 def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, sep=',', model_dir=None, smiles_col=None):

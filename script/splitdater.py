@@ -5,7 +5,7 @@ from rdkit import Chem
 from rdkit import DataStructs
 from rdkit.ML.Cluster import Butina
 from rdkit.Chem import rdFingerprintGenerator
-from script.data_utils import ScaffoldSplitter
+from data_utils import ScaffoldSplitter
 import numpy as np
 np.random.seed(43)
 

@@ -9,8 +9,8 @@ import os
 import sys
 
 
-from script.DNN_model import para_dnn
-from script.graph_model import para_dl
+from DNN_model import para_dnn
+from graph_model import para_dl
 import itertools
 
 np.set_printoptions(threshold=sys.maxsize)

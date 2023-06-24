@@ -13,7 +13,7 @@ import warnings
 from sklearn import preprocessing
 from script.splitdater import split_dataset
 from script.feature_create import create_des
-from script.data_utils import TVT
+from data_utils import TVT
 
 
 warnings.filterwarnings('ignore')
