@@ -8,12 +8,12 @@ import time
 import os
 import sys
 
-from XGB_model import para_xgb
-from SVM_model import para_svm
-from RF_model import para_rf
-from KNN_model import para_knn
-from DNN_model import para_dnn
-from graph_model import para_dl
+from script.XGB_model import para_xgb
+from script.SVM_model import para_svm
+from script.RF_model import para_rf
+from script.KNN_model import para_knn
+from script.DNN_model import para_dnn
+from script.graph_model import para_dl
 import itertools
 np.set_printoptions(threshold=sys.maxsize)
 os.environ['PYTHONHASHSEED'] = str(42)  # 为了禁止hash随机化，使得实验可复现
