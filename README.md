@@ -37,7 +37,6 @@ The tool integrates the virtual screening function and uses the optimal model to
     (Finally, folder screen will be generated under the set model_save peer directory to store the filtering results)
 
 ## 4 Us Exmample : the ABCG2 inihbits model buliding
-* 1 $ git@github.com:danqingmk/PyaiVS.git
-* 2 $ cd PyaiVS
-* 3 $ python example.py
-* 4 Obtain multiple model calculation results and MCC ranking, and store the specific data content in ./dataset/abcg2
+
+* 1 $ python example.py
+* 2 Obtain multiple model calculation results and MCC ranking, and store the specific data content in ./dataset/abcg2
