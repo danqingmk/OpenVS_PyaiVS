@@ -1,9 +1,9 @@
 import os
 import multiprocessing as mp
 import pandas as pd
-import ml_screener
-import dl_screener
-import dnn_screener
+import script.ml_screener
+import script.dl_screener
+import script.dnn_screener
 
 
 def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, sep=',', model_dir=None, smiles_col=None):
@@ -41,12 +41,12 @@ def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, se
             for file_content in os.listdir(screen_file):
                 file_path = os.path.join(screen_file, file_content)
                 param = {'file': file_path, 'sep': sep, 'models': model_path, 'prop': prop, 'out_dir': out_dir}
-                get = p.apply_async(ml_screener.cir_file, kwds=param)
+                get = p.apply_async(script.ml_screener.cir_file, kwds=param)
             p.close()
             p.join()
         elif os.path.isfile(screen_file):
             print(screen_file, model_path, smiles_col)
-            ml_screener.cir_file(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
+            script.ml_screener.cir_file(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
                                  smiles_col=smiles_col)
         else:
             print('What\'s this ?')
@@ -77,11 +77,11 @@ def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, se
                 file_path = os.path.join(screen_file, file_content)
                 param = {'file': file_path, 'sep': sep, 'models': model_path, 'prop': prop, 'out_dir': out_dir,
                          'smiles_col': smiles_col}
-                get = p.apply_async(dnn_screener.screen, kwds=param)
+                get = p.apply_async(script.dnn_screener.screen, kwds=param)
                 p.close()
                 p.join()
         elif os.path.isfile(screen_file):
-            dnn_screener.screen(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
+            script.dnn_screener.screen(file=screen_file, sep=sep, models=model_path, prop=prop, out_dir=out_dir,
                                 smiles_col=smiles_col)
         else:
             print('What\'s this ?')
@@ -139,7 +139,7 @@ def model_screen(model=None, FP=None, split=None, screen_file=None, prop=0.5, se
                 file_path = os.path.join(screen_file, file_content)
                 param = {'file': file_path, 'sep': sep, 'models': model_path, 'prop': prop, 'out_dir': out_dir,
                          'smiles_col': smiles_col}
-                get = p.apply_async(dl_screener.screen, kwds=param)
+                get = p.apply_async(script.dl_screener.screen, kwds=param)
                 p.close()
                 p.join()
         elif os.path.isfile(screen_file):
