@@ -10,7 +10,7 @@ from torch.nn import BCEWithLogitsLoss, MSELoss
 from torch.utils.data import DataLoader
 import torch
 from script.splitdater import split_dataset
-from data_utils import TVT
+from script.data_utils import TVT
 from dgl.model_zoo.chem import MPNNModel, GCNClassifier, GATClassifier, AttentiveFP
 import numpy as np
 from sklearn.model_selection import train_test_split
