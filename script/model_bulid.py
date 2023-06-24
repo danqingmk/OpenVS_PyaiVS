@@ -34,7 +34,7 @@ def running(file_name,out_dir = './',split=None,model=None,FP=None, run_type=Non
     if not file_name==os.path.join(dir_path,dataset + '.csv'):
         shutil.copy(file_name, os.path.join(dir_path,dataset + '.csv'))
     des = [fp for fp in FP if fp in ['pubchem','2d-3d']]
-    data_utils.start(file, des=des)
+    script.data_utils.start(file, des=des)
     mpl = True if cpus>1 else False
     if run_type =='param':
         run_model.main(file, split, FP, model, cpus, mpl, 'cpu')
