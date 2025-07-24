@@ -106,9 +106,10 @@ In this code:
     ・top_k=50 is an optional parameter (in this example) specifying that we are interested in the top 50 predicted hits. If supported, PyaiVS will identify the 50 compounds with the highest predicted probability of being ABCG2 inhibitors and could, for instance, write them to a separate file or highlight them in the output. (If top_k is not specified, PyaiVS will simply output scores for all compounds; you can then sort the results to find the top candidates manually.)
 
 After running model_screen, the variable screening_results may contain the raw predictions (for example, a list of predicted values or a data structure). More importantly, the file screening_results.csv will be created. You can open this file to examine the results of the virtual screening. It might look like:
-   SMILES,                       Predicted_Score
-   CCOc1ccc2nc(S(=O)(=O)N)c... ,     0.95
-   O=c1cc(-c2ccccn2)onc1OCC... ,     0.90
+
+   SMILES,                       Predicted_Score\
+   CCOc1ccc2nc(S(=O)(=O)N)c... ,     0.95\
+   O=c1cc(-c2ccccn2)onc1OCC... ,     0.90\
    ... (other compounds and scores)
 
 Where "Predicted_Score" could be a probability (between 0 and 1) of being an inhibitor, or some score where higher means more likely active. The compounds would be sorted by score if top_k was used and the output was filtered.
@@ -121,10 +122,10 @@ Below is a full example script (as might be found in example.py) that combines a
 
 .. code-block:: python
 
-   from pyaiVS import model_bulid, virtual_screen
+   from PyaiVS import model_bulid, virtual_screen
 
    # Step 1: define the dataset path
-   data_file = "ABCG2_inhibitors.csv"
+   data_file = "abcg2.csv"
 
    # Step 2: run parameter optimization to select best model and representation
    best_config = model_bulid.running(data_file, run_type='param')
@@ -138,7 +139,7 @@ Below is a full example script (as might be found in example.py) that combines a
    # (The final_model now holds the trained model. Performance metrics are shown in the console output.)
 
    # Step 4: perform virtual screening on a new library of compounds
-   library_file = "virtual_library.smi"  # input file with SMILES of compounds to screen
+   library_file = "base.csv"  # input file with SMILES of compounds to screen
    virtual_screen.model_screen(final_model, library_file, 
                             output_file="predicted_hits.csv", top_k=100)
    # The results of the screening are saved to "predicted_hits.csv". The top 100 predicted compounds are written (along with their scores).
