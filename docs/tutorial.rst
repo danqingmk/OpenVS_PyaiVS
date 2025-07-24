@@ -1,5 +1,5 @@
-PyaiVS Tutorial: ABCG2 Inhibitor Workflow
-=========================================
+Tutorial
+========
 
 Welcome to the PyaiVS tutorial. In this tutorial, we will demonstrate a complete virtual screening workflow for finding inhibitors of the ABCG2 transporter using PyaiVS. The steps include preparing a dataset of known actives/inactives, optimizing the model parameters, training and evaluating a predictive model, and then using that model to screen a library of new compounds.
 
@@ -7,7 +7,7 @@ ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cas
 
 In a recent study, PyaiVS was used to screen over 4 million compounds for potential ABCG2 inhibitors, leading to the experimental discovery of several novel inhibitor molecules.This tutorial will walk through the same process on a smaller scale, using example data.
 
-Dataset Preparation
+**Dataset Preparation**
 
 The first step is to prepare your dataset of compounds with known activity against ABCG2. PyaiVS expects the data in a tabular format (commonly a CSV file) containing at least a column for molecular structures and a column for the target variable. Typically, the molecular structure is provided as a SMILES string, and the target variable can be a binary label (e.g., 1 for inhibitor, 0 for non-inhibitor) or a continuous value (e.g., an IC50 or Kd for regression tasks).
 For example, you might have a file ABCG2_inhibitors.csv with the following columns:
