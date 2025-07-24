@@ -1,6 +1,6 @@
-.. note:: To be updated
 
 PyaiVS Developer Guide
+======================
 
 This guide is intended for developers and advanced users who want to understand the internals of PyaiVS or extend its functionality. It provides an overview of the code structure and instructions on how to add new algorithms, descriptors, or split strategies to the framework. It also outlines guidelines for contributing to the project.
 PyaiVS was designed to unify various components of AI-driven virtual screening into a single package. As such, it integrates multiple machine learning models, feature representations, and data handling techniques under the hood. Understanding how these pieces fit together will help you modify or extend the software.
