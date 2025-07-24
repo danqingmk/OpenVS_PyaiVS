@@ -43,13 +43,13 @@ When you execute the above, PyaiVS will begin testing various model configuratio
 
 After completion, the *best_settings* object (its type could be a dictionary or a custom object, depending on implementation) will contain the details of the best-found model. For example, it might return something like:
 
-   best_settings['algorithm'] – the name of the best algorithm (e.g., "GCN" or "RandomForest").
+   ・best_settings['algorithm'] – the name of the best algorithm (e.g., "GCN" or "RandomForest").
 
-   best_settings['representation'] – the best molecular representation (e.g., "Graph" for a graph-based model, or "ECFP4" for an ECFP4 fingerprint).
+   ・best_settings['representation'] – the best molecular representation (e.g., "Graph" for a graph-based model, or "ECFP4" for an ECFP4 fingerprint).
 
-   best_settings['split'] – the data splitting strategy that was used/best (e.g., "cluster").
+   ・best_settings['split'] – the data splitting strategy that was used/best (e.g., "cluster").
 
-   It may also include optimal hyperparameters or model objects, depending on the design of PyaiVS.
+   ・It may also include optimal hyperparameters or model objects, depending on the design of PyaiVS.
 
 You can inspect this output or log to see what model PyaiVS recommends. In our hypothetical scenario, let's say the parameter search concludes that a Graph Convolutional Network using a graph representation of molecules (with a clustering-based split for training/testing) yielded the highest validation performance.
 
@@ -106,18 +106,18 @@ In this code:
     ・top_k=50 is an optional parameter (in this example) specifying that we are interested in the top 50 predicted hits. If supported, PyaiVS will identify the 50 compounds with the highest predicted probability of being ABCG2 inhibitors and could, for instance, write them to a separate file or highlight them in the output. (If top_k is not specified, PyaiVS will simply output scores for all compounds; you can then sort the results to find the top candidates manually.)
 
 After running model_screen, the variable screening_results may contain the raw predictions (for example, a list of predicted values or a data structure). More importantly, the file screening_results.csv will be created. You can open this file to examine the results of the virtual screening. It might look like:
-   SMILES,Predicted_Score
-   CCOc1ccc2nc(S(=O)(=O)N)c... , 0.95
-   O=c1cc(-c2ccccn2)onc1OCC... , 0.90
+   SMILES,                       Predicted_Score
+   CCOc1ccc2nc(S(=O)(=O)N)c... ,     0.95
+   O=c1cc(-c2ccccn2)onc1OCC... ,     0.90
    ... (other compounds and scores)
 
 Where "Predicted_Score" could be a probability (between 0 and 1) of being an inhibitor, or some score where higher means more likely active. The compounds would be sorted by score if top_k was used and the output was filtered.
 
 You can then take the top candidates (in our example, 50 compounds) for further analysis, such as more detailed in silico modeling (docking, pharmacophore analysis) or even experimental testing.
 
-Full Workflow Example
+**Full Workflow Example**
 
-Below is a full example script (as might be found in example.py) that combines all the steps above into one coherent workflow. This example assumes that you have prepared ABCG2_inhibitors.csv as described and have a file virtual_library.smi with compounds to screen.
+Below is a full example script (as might be found in example.py) that combines all the steps above into one coherent workflow. This example assumes that you have prepared abcg2.csv as described and have a file base.csv with compounds to screen.
 
 .. code-block:: python
 
