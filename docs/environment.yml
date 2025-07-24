@@ -12,3 +12,6 @@ dependencies:
   - mkdocstrings
   - pymdown-extensions
   - pyyaml
+  - myst-parser
+   pip:
+    - sphinx-book-theme
