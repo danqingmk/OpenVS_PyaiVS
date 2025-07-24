@@ -18,3 +18,7 @@ dependencies:
   - mxnet
   - requests
   - pip           # Install pip to enable installing Sphinx and other packages later
+  - pip:
+      - sphinx
+      - myst-parser
+      - sphinx-rtd-theme
