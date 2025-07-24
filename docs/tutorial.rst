@@ -107,10 +107,10 @@ In this code:
 
 After running model_screen, the variable screening_results may contain the raw predictions (for example, a list of predicted values or a data structure). More importantly, the file screening_results.csv will be created. You can open this file to examine the results of the virtual screening. It might look like:
 
-   SMILES,                       Predicted_Score\
-   CCOc1ccc2nc(S(=O)(=O)N)c... ,     0.95\
-   O=c1cc(-c2ccccn2)onc1OCC... ,     0.90\
-   ... (other compounds and scores)
+   | SMILES,                       Predicted_Score
+   | CCOc1ccc2nc(S(=O)(=O)N)c... ,     0.95
+   | O=c1cc(-c2ccccn2)onc1OCC... ,     0.90
+   | ... (other compounds and scores)
 
 Where "Predicted_Score" could be a probability (between 0 and 1) of being an inhibitor, or some score where higher means more likely active. The compounds would be sorted by score if top_k was used and the output was filtered.
 
