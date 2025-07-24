@@ -1,6 +1,6 @@
 Installation
 ============
-Installation via pip
+**Installation via pip**
 
 PyaiVS is available on the Python Package Index (PyPI) and can be installed using pip. We recommend using Python 3.8+ and installing PyaiVS in a clean virtual environment (such as one created with venv or Conda) to avoid dependency conflicts. To install PyaiVS and its core dependencies with pip, run:
 
@@ -11,13 +11,11 @@ PyaiVS is available on the Python Package Index (PyPI) and can be installed usin
 
 This single command will install the PyaiVS library along with RDKit (for cheminformatics), PyTorch (for deep learning models), and the Deep Graph Library (DGL) for graph neural networks, if those packages are not already present.
 
-.. note:: RDKit now provides pip-installable wheels for major platforms, so pip install rdkit works on Windows, macOS, and Linux. If you encounter issues with the RDKit installation via pip (for example, on certain Linux setups), consider using the conda approach described below to install RDKit. Also, if you have a CUDA-capable GPU and wish to leverage it, install the CUDA-enabled versions of PyTorch and DGL (for example, using PyTorch's official pip wheels with CUDA, and DGL's dgl-cuda<span>**X.Y**</span> packages corresponding to your CUDA version) instead of the default CPU versions. PyaiVS itself will use whichever backend is installed (CPU or GPU) without additional configuration.
-
-Installation via conda
+**Installation via conda**
 
 Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing complex dependencies like RDKit and GPU libraries. The following steps demonstrate a conda-based installation:
 
-#. Create a conda environment (optional): Create a new environment for PyaiVS to keep its packages isolated.
+\#. Create a conda environment (optional): Create a new environment for PyaiVS to keep its packages isolated.
 
 .. code-block:: bash
 
@@ -26,7 +24,7 @@ Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing co
 
 The above creates and activates an environment named "pyaivs_env" with Python 3.9. (You may choose a different Python version as needed.)
 
-#. Install RDKit and PyTorch: Use conda to install RDKit and PyTorch. RDKit is available via the conda-forge channel, and PyTorch can be installed from PyTorch’s channel (or conda-forge for CPU-only version).
+\#. Install RDKit and PyTorch: Use conda to install RDKit and PyTorch. RDKit is available via the conda-forge channel, and PyTorch can be installed from PyTorch’s channel (or conda-forge for CPU-only version).
 
 .. code-block:: bash
 
