@@ -1,6 +1,6 @@
 Installation
 ============
-**Installation via pip**
+**1. Installation via pip**
 
 PyaiVS is available on the Python Package Index (PyPI) and can be installed using pip. We recommend using Python 3.8+ and installing PyaiVS in a clean virtual environment (such as one created with venv or Conda) to avoid dependency conflicts. To install PyaiVS and its core dependencies with pip, run:
 
@@ -11,7 +11,7 @@ PyaiVS is available on the Python Package Index (PyPI) and can be installed usin
 
 This single command will install the PyaiVS library along with RDKit (for cheminformatics), PyTorch (for deep learning models), and the Deep Graph Library (DGL) for graph neural networks, if those packages are not already present.
 
-**Installation via conda**
+**2. Installation via conda**
 
 Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing complex dependencies like RDKit and GPU libraries. The following steps demonstrate a conda-based installation:
 
