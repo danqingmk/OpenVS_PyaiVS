@@ -37,68 +37,14 @@ The PyaiVS codebase is organized into modules that correspond to different parts
 
 With this overview, you can begin to locate the areas of the code relevant to the changes you want to make. Below, we discuss specific extension points in PyaiVS.
 
-Adding New Machine Learning Models
+**Extending PyaiVS**
 
-One way to extend PyaiVS is to add support for a new machine learning algorithm beyond the ones already integrated. For example, you might want to add XGBoost as a new algorithm, or incorporate a new deep learning architecture.
+PyaiVS can be extended with new machine learning models, molecular descriptors, and data splitting strategies. Adding any of these requires implementing the component and integrating it so the framework recognizes it. The process is similar for each type:
 
-Here are guidelines for adding a new model:
+   · New Machine Learning Model (e.g., LightGBM): Implement the model in the codebase (for example, add a class or function in the models module). Follow the pattern of existing models (ensure it provides required training and prediction methods). Then register the model so PyaiVS can use it (for instance, add it to the model registry or configuration that lists available models). For LightGBM, wrap an LGBMClassifier from the LightGBM library (requiring that the library is installed) in a new model class. Finally, verify the model accepts the chosen descriptors and produces predictions as expected.
 
-    Implement or import the model: If the new algorithm is available via an external library (e.g., XGBoost or LightGBM), you can use that library. Ensure it’s installed in your environment and import the necessary classes in the PyaiVS code. If it’s a custom model, implement the model’s class or training functions. For deep learning models, this could mean writing a new PyTorch model class.
+   · New Molecular Descriptor Method: Create the descriptor calculation in the descriptors module (e.g., a function that takes a molecule and returns a feature vector). Integrate this new method by adding it to the descriptor registry or pipeline configuration so PyaiVS can recognize it by name. Ensure the descriptor’s output format (such as a NumPy array of features) matches what the models expect, and handle any required parameters or initialization.
 
-    Register the model in PyaiVS: Locate where PyaiVS selects and instantiates models based on a name or identifier. In the model_bulid module, this might be a series of if/elif statements or a dictionary mapping algorithm names to model constructors. Add an entry for your model. For example, if adding XGBoost, you might add logic such that when algorithm="XGBoost", PyaiVS will initialize an XGBClassifier with certain default parameters.
-
-    Integrate training and prediction: Ensure that the new model can be trained and used for prediction within the PyaiVS pipeline. If the model follows a scikit-learn interface (with .fit() and .predict() methods), integration can be straightforward. If it’s a PyTorch model, you might need to write a training loop unless one is already provided. You may reuse patterns from existing deep models in the code (e.g., how the GCN model is trained).
-
-    Handle model-specific features: If the model requires a specific input format or has unique requirements, address those. For instance, if your model only works with fingerprint vectors, you should indicate that only certain representations are compatible. Conversely, if it’s a graph-based model, ensure it receives a graph object. PyaiVS might have a section where it checks the representation and algorithm combination; you may need to update this logic to include your new model.
-
-    Hyperparameters and optimization: Optionally, decide how hyperparameters for the new model will be handled. You can provide default values (e.g., number of trees for a random forest, or network architecture details for a neural net). If you want the run_type='param' mode to consider this model, add a range of hyperparameters or configurations for it in the parameter search routine. This could be as simple as adding your model to the list of algorithms that run_type='param' iterates over, or as involved as adding a grid of hyperparameter values in the code.
-
-    Testing the new model: After adding the model, test it on a small dataset. Run model_bulid.running(..., run_type='param') including your new model to see that it trains and produces results. Then try run_type='result' to ensure it can train fully and the model can be saved and loaded. Verify that virtual_screen.model_screen works with the model (i.e., it can take the trained model and make predictions on new data). This process will confirm that your integration is successful.
-
-By following these steps, you can incrementally build support for new algorithms into PyaiVS. The modular design of the package (with a unified training pipeline) should facilitate adding new models as long as you hook into the existing interfaces properly.
-
-**Adding New Molecular Descriptors**
-
-Another extension point is introducing new molecular descriptors or representation methods. PyaiVS comes with a set of built-in representations (fingerprints, graphs, etc.), but you may want to use a different descriptor (for example, a custom fingerprint, a descriptor set like RDKit’s topological features, or embeddings from a pretrained model).
-
-To add a new molecular representation:
-
-    Implement the descriptor calculation: Write a function that takes a molecule and produces the descriptor. For instance, if adding a new fingerprint type, use RDKit (or another library) to calculate it. Ensure this function can be applied to all molecules in your dataset efficiently (perhaps vectorizing over a list of molecules if possible). If the descriptor is complex (e.g., requires an external model or a web service), ensure you handle those dependencies.
-
-    Integrate with the feature pipeline: Find where PyaiVS generates features from molecules. This could be in model_bulid.running or a helper function that converts SMILES to features. Add your descriptor as a new option. For example, there might be a conditional like if representation == "ECFP4": compute Morgan fingerprint. You would add elif representation == "MyDesc": compute your descriptor. Make sure to also handle any normalization or data formatting your descriptor might need (e.g., scaling continuous descriptors, handling array shapes, etc.).
-
-    Specify compatibility with models: Consider which algorithms can work with your new descriptor. Most descriptors that yield a fixed-length numerical vector can be used with any traditional ML or fully-connected network. If your descriptor is an image or a sequence, you’d need a model that can handle that (which is beyond typical usage). In general, as long as your descriptor results in a numeric feature vector per molecule, you can plug it into the existing models (scikit-learn models can handle it as part of their X input, and PyTorch models can handle it if they have been designed for vector inputs or you adapt the network).
-
-    Update representation lists (if any): PyaiVS might maintain a list or enumeration of valid representation strings. Add your new representation name so that the program recognizes it and perhaps so that it’s included in any documentation or error messages. If run_type='param' should consider this representation, include it in the search. For example, if previously the code tried representations ["ECFP4", "MACCS", "Graph"], you might expand it to ["ECFP4", "MACCS", "Graph", "MyDesc"].
-
-    Test the new descriptor: Run a quick experiment to ensure that when you specify your new representation, the pipeline executes without errors. Check that the values being generated make sense (maybe print out a snippet of the feature vector for one molecule to verify it’s in the expected range or format). Then verify that models train on these features and yield results. This will confirm that your descriptor is correctly integrated.
-
-By adding new descriptors, you expand the capability of PyaiVS to explore different feature spaces for virtual screening. This can be especially powerful if your new descriptor encodes information not captured by existing ones (for example, a pharmacophore-based bit vector, or a learned molecular embedding from another AI model).
-
-Implementing Custom Split Strategies
-
-Robust model evaluation often requires trying different ways of splitting data into training and testing sets. PyaiVS supports several out-of-the-box strategies,  but you might conceive of a new strategy (for example, time-based splits, or splitting by compound origin, etc.).
-
-To add a custom data splitting strategy:
-
-    Write the splitting function: Define a function (perhaps in the data utilities section of the code) that takes your dataset (and any relevant parameters) and returns indices or subsets for train/validation/test. For example, a time-based split might sort compounds by the date of discovery and take the earliest 80% as training and the latest 20% as test, simulating prospective validation. Ensure your function outputs in a format consistent with other split functions (commonly a tuple like (train_indices, test_indices) or (train_set, valid_set, test_set) depending on whether you use a separate validation set).
-
-    Integrate with the pipeline: Identify where the splitting strategy is chosen in model_bulid.running. It might use a variable or parameter (e.g., split="random" or "cluster"). Add your new strategy here. For instance, if the user specifies split="time", call your time-based splitting function. If strategies are stored in a dictionary, add an entry mapping "time" to your function.
-
-    Maintain reproducibility and options: If your split method involves randomness (like random shuffling or random cluster assignment), ensure you incorporate the random seed from PyaiVS (if provided) or otherwise allow reproducibility. You may also allow the user to pass specific arguments (though typically, split strategies are chosen by name only; any specific parameters could be hardcoded or inferred).
-
-    Adapt any cross-validation or parameter search logic: In run_type='param' mode, if the code evaluates models under different splits, adding a new strategy means it could be included in that rotation. Decide if your new split should be part of that automatic exploration. If yes, insert it accordingly (with caution, as it will increase the search space).
-
-    Test the new splitting method: Try running the pipeline with your split. For example, call model_bulid.running(data_path, run_type='result', split='time', algorithm='RandomForest', representation='ECFP4') to see that:
-
-        The data is split as you expect (you might print the sizes of train/test to verify).
-
-        Model training and evaluation proceed without errors using that split.
-
-        The results make sense (e.g., if using time-based split, likely the model might have slightly lower performance if the distribution shifted over time – just an example of what to expect).
-
-Adding custom split strategies allows you to tailor model validation to scenarios that the default strategies don’t cover. This can be important in drug discovery, where splits by scaffold or other criteria simulate how models perform on truly novel chemistry.
-
-Extensions and Future Work
+   · New Data Splitting Strategy: Implement the strategy as a new class or function, mirroring the interface of existing splitting strategies (which output train/test splits as indices or subsets). Register this strategy in the splitting configuration so it can be selected (for example, by adding a case in the splitting selection logic or a new entry in a strategy lookup table). Make sure the new splitter yields the training and test sets (and validation if applicable) in the correct format to be consumed by PyaiVS.
 
 .. note:: To be updated
