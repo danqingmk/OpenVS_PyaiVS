@@ -7,7 +7,7 @@ ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cas
 
 In a recent study, PyaiVS was used to screen over 4 million compounds for potential ABCG2 inhibitors, leading to the experimental discovery of several novel inhibitor molecules.This tutorial will walk through the same process on a smaller scale, using example data.
 
-**Dataset Preparation**
+**1. Dataset Preparation**
 
 The first step is to prepare your dataset of compounds with known activity against ABCG2. PyaiVS expects the data in a tabular format (commonly a CSV file) containing at least a column for molecular structures and a column for the target variable. Typically, the molecular structure is provided as a SMILES string, and the target variable can be a binary label (e.g., 1 for inhibitor, 0 for non-inhibitor).
 For example, you might have a file ABCG2_inhibitors.csv with the following columns:
@@ -20,7 +20,7 @@ Ensure that the data is clean (e.g., valid SMILES strings, no missing labels). I
 
 Once your dataset is prepared and accessible, you can proceed to use PyaiVS for model building.
 
-**Parameter Optimization**
+**2. Parameter Optimization**
 
 Before committing to a specific model, PyaiVS can help you explore which machine learning algorithm and which molecular representation work best for your dataset. This is done via the *model_bulid.running(..., run_type='param')* mode, which performs a parameter optimization (or model selection) routine.
 
@@ -53,7 +53,7 @@ After completion, the *best_settings* object (its type could be a dictionary or 
 
 You can inspect this output or log to see what model PyaiVS recommends. In our hypothetical scenario, let's say the parameter search concludes that a Graph Convolutional Network using a graph representation of molecules (with a clustering-based split for training/testing) yielded the highest validation performance.
 
-**Model Evaluation (Training the Final Model)**
+**3. Model Evaluation (Training the Final Model)**
 
 Once the optimal model type and features are identified, the next step is to train the final model on the dataset and evaluate its performance. This is accomplished with *model_bulid.running(..., run_type='result')*. In this mode, PyaiVS will typically train the chosen model on the training portion of your data and then evaluate it on a test set (or via cross-validation), providing performance metrics as output.
 
@@ -77,7 +77,7 @@ At this point, final_model may be an object representing the trained model (for 
 
 Now we have a trained model that appears to perform well in distinguishing likely ABCG2 inhibitors. The next step is to use this model for virtual screening.
 
-**Virtual Screening with the Trained Model**
+**4. Virtual Screening with the Trained Model**
 
 Virtual screening involves taking a large collection of candidate compounds (for example, a chemical library or database) and using our model to predict which of those compounds are likely to be active (in this case, ABCG2 inhibitors). PyaiVS provides a function virtual_screen.model_screen(...) for this purpose.
 
@@ -116,7 +116,7 @@ Where "Predicted_Score" could be a probability (between 0 and 1) of being an inh
 
 You can then take the top candidates (in our example, 50 compounds) for further analysis, such as more detailed in silico modeling (docking, pharmacophore analysis) or even experimental testing.
 
-**Full Workflow Example**
+**5. Full Workflow Example**
 
 Below is a full example script (as might be found in example.py) that combines all the steps above into one coherent workflow. This example assumes that you have prepared abcg2.csv as described and have a file base.csv with compounds to screen.
 
