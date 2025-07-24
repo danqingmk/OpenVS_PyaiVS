@@ -15,10 +15,3 @@ PyaiVS is designed to unify AI-driven virtual screening workflows by integrating
    installation
    tutorial
    developer_guide
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
