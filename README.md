@@ -13,7 +13,7 @@ The tool integrates the virtual screening function and uses the optimal model to
 2. conda install rdkit rdkit             
 3. conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch  # need to confirm your cuda>=10.2  
 4. conda install -c dglteam dgl==0.4.3post2   
-5. conda install **xgboost,hyperopt,mxnet,requests,mdtraj**    
+5. conda install **xgboost,hyperopt,mxnet,requests**    
 6. pip install PyaiVS   
 
 
