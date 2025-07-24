@@ -13,11 +13,5 @@ sphinx:
 conda:
   # Conda environment file that lists all scientific dependencies
   environment: docs/environment.yml
-
-python:
-  install:
-    # Extra pip-only dependencies (Sphinx, theme, etc.)
-    - requirements: docs/requirements.txt
-
         
 
