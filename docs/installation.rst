@@ -40,9 +40,11 @@ Optional: If you plan to use graph-based models, you should also install DGL. Yo
    pip install dgl
 
 (For GPU support in DGL, use the appropriate dgl-cuda package via pip or conda, matching your CUDA version.)
-#. Install PyaiVS: With the environment prepared and core dependencies installed, you can now install PyaiVS itself.
+
+\#. Install PyaiVS: With the environment prepared and core dependencies installed, you can now install PyaiVS itself.
 
 .. code-block:: bash
+
    pip install PyaiVS
 
-This will download and install the PyaiVS package from PyPI into your conda environment. Since the heavy dependencies (RDKit, PyTorch, etc.) are already installed, this step should be quick. If in the future PyaiVS is made available on conda-forge, you could alternatively use conda install -c conda-forge pyaiVS to install it entirely via conda.
+This will download and install the PyaiVS package from PyPI into your conda environment.
