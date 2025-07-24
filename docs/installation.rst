@@ -21,7 +21,7 @@ Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing co
 
 .. code-block:: bash
 
-    conda create -n pyaivs_env python=3.9 -y
+    conda create -n pyaivs_env python=3.8 -y
     conda activate pyaivs_env
 
 The above creates and activates an environment named "pyaivs_env" with Python 3.9. (You may choose a different Python version as needed.)
