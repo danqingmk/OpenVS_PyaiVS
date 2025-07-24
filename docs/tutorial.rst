@@ -33,7 +33,7 @@ Let's run the parameter optimization step on our dataset:
    from pyaiVS import model_bulid
 
    # Specify the path to the dataset (CSV file)
-   data_path = "ABCG2_inhibitors.csv"
+   data_path = "abcg2.csv"
 
    # Run parameter optimization to find the best algorithm and representation
    best_settings = model_bulid.running(data_path, run_type='param')
@@ -41,7 +41,7 @@ Let's run the parameter optimization step on our dataset:
    
 When you execute the above, PyaiVS will begin testing various model configurations. This process may take some time depending on the size of your dataset and the number of combinations (since it could train multiple models under the hood). As it runs, you should see output indicating which algorithm and representation are being evaluated and the performance (e.g., cross-validated AUC-ROC, accuracy, etc.) for each.
 
-After completion, the best_settings object (its type could be a dictionary or a custom object, depending on implementation) will contain the details of the best-found model. For example, it might return something like:
+After completion, the *best_settings* object (its type could be a dictionary or a custom object, depending on implementation) will contain the details of the best-found model. For example, it might return something like:
 
    best_settings['algorithm'] – the name of the best algorithm (e.g., "GCN" or "RandomForest").
 
@@ -53,9 +53,9 @@ After completion, the best_settings object (its type could be a dictionary or a 
 
 You can inspect this output or log to see what model PyaiVS recommends. In our hypothetical scenario, let's say the parameter search concludes that a Graph Convolutional Network using a graph representation of molecules (with a clustering-based split for training/testing) yielded the highest validation performance.
 
-Model Evaluation (Training the Final Model)
+**Model Evaluation (Training the Final Model)**
 
-Once the optimal model type and features are identified, the next step is to train the final model on the dataset and evaluate its performance. This is accomplished with model_bulid.running(..., run_type='result'). In this mode, PyaiVS will typically train the chosen model on the training portion of your data and then evaluate it on a test set (or via cross-validation), providing performance metrics as output.
+Once the optimal model type and features are identified, the next step is to train the final model on the dataset and evaluate its performance. This is accomplished with *model_bulid.running(..., run_type='result')*. In this mode, PyaiVS will typically train the chosen model on the training portion of your data and then evaluate it on a test set (or via cross-validation), providing performance metrics as output.
 
 Using the example best settings from above (GCN algorithm with graph representation), we would run:
 
@@ -77,11 +77,11 @@ At this point, final_model may be an object representing the trained model (for 
 
 Now we have a trained model that appears to perform well in distinguishing likely ABCG2 inhibitors. The next step is to use this model for virtual screening.
 
-Virtual Screening with the Trained Model
+**Virtual Screening with the Trained Model**
 
 Virtual screening involves taking a large collection of candidate compounds (for example, a chemical library or database) and using our model to predict which of those compounds are likely to be active (in this case, ABCG2 inhibitors). PyaiVS provides a function virtual_screen.model_screen(...) for this purpose.
 
-Before running the screening, prepare your library of candidate compounds in a format that PyaiVS can process. This might be a SMILES file (each line is a SMILES and perhaps an identifier) or a CSV with a SMILES column, or another format that the virtual_screen module supports. For our example, let's assume we have a file virtual_library.smi that contains hundreds or millions of SMILES of compounds to screen.
+Before running the screening, prepare your library of candidate compounds in a format that PyaiVS can process. This might be a SMILES file (each line is a SMILES and perhaps an identifier) or a CSV with a SMILES column, or another format that the virtual_screen module supports. For our example, let's assume we have a file base.csv that contains thousands of SMILES of compounds to screen.
 
 Using the trained model (from the previous step) and the library file, we can execute the virtual screening as follows:
 
