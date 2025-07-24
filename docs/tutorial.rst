@@ -30,7 +30,7 @@ Let's run the parameter optimization step on our dataset:
 
 .. code-block:: python
 
-   from pyaiVS import model_bulid
+   from PyaiVS import model_bulid
 
    # Specify the path to the dataset (CSV file)
    data_path = "abcg2.csv"
@@ -61,7 +61,7 @@ Using the example best settings from above (GCN algorithm with graph representat
 
 .. code-block:: python
 
-   from pyaiVS import model_bulid
+   from PyaiVS import model_bulid
    # Using the best model settings obtained from the previous step:
    final_model = model_bulid.running(data_path, run_type='result',
                                   algorithm=best_settings['algorithm'],
@@ -87,7 +87,7 @@ Using the trained model (from the previous step) and the library file, we can ex
 
 .. code-block:: python
 
-   from pyaiVS import virtual_screen
+   from PyaiVS import virtual_screen
 
    # Use the trained model to screen a library of compounds
    screening_results = virtual_screen.model_screen(final_model, 
