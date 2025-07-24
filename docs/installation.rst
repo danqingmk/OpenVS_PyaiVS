@@ -1,5 +1,5 @@
 Installation
-
+============
 Installation via pip
 
 PyaiVS is available on the Python Package Index (PyPI) and can be installed using pip. We recommend using Python 3.8+ and installing PyaiVS in a clean virtual environment (such as one created with venv or Conda) to avoid dependency conflicts. To install PyaiVS and its core dependencies with pip, run:
