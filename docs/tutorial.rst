@@ -1,3 +1,5 @@
+PyaiVS Tutorial: ABCG2 Inhibitor Workflow
+=========================================
 
 Welcome to the PyaiVS tutorial. In this tutorial, we will demonstrate a complete virtual screening workflow for finding inhibitors of the ABCG2 transporter using PyaiVS. The steps include preparing a dataset of known actives/inactives, optimizing the model parameters, training and evaluating a predictive model, and then using that model to screen a library of new compounds.
 
