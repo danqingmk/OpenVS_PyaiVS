@@ -1,0 +1,23 @@
+version: 2
+
+build:
+  os: ubuntu-22.04
+  tools:
+    # Use the latest Mambaforge image for faster conda solves
+    python: "mambaforge-latest"
+
+sphinx:
+  # Path to the Sphinx configuration file
+  configuration: docs/conf.py
+
+conda:
+  # Conda environment file that lists all scientific dependencies
+  environment: docs/environment.yml
+
+python:
+  install:
+    # Extra pip-only dependencies (Sphinx, theme, etc.)
+    - requirements: docs/requirements.txt
+
+        
+
