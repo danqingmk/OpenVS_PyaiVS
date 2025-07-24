@@ -12,6 +12,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
+    'myst_parser',
 ]
 autosummary_generate = True  # Automatically generate autosummary listings
 html_theme = "sphinx_rtd_theme"  # Use the Read the Docs theme
