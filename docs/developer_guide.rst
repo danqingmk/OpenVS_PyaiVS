@@ -17,21 +17,22 @@ The PyaiVS codebase is organized into modules that correspond to different parts
     **Molecular representations** – The package supports five types of molecular representations for input features. This includes fingerprint-based descriptors like ECFP4 (circular fingerprints) and MACCS keys, which are computed using RDKit for each molecule. It also includes graph-based representations where molecules are converted into graph objects (nodes for atoms, edges for bonds) for use with graph neural networks (e.g., GCN, GAT, Attentive FP). There may also be other representations such as physicochemical descriptor vectors or other fingerprint types. The code responsible for featurization will choose the appropriate method based on the representation parameter (for instance, calling an RDKit function to get a fingerprint bit vector, or a DGL utility to create a graph from an RDKit Mol).
 
     **Data splitting strategies** – PyaiVS includes multiple data splitting strategies for model validation. Likely options are: 
+
        **random split** (shuffling the dataset into train/test)
 
        **scaffold split** (separating molecules by their core scaffolds so that the test set contains scaffolds not seen in training)
 
-       **cluster-based split (clustering molecules by similarity and then splitting clusters between train/test to ensure diversity). 
+       **cluster-based split** (clustering molecules by similarity and then splitting clusters between train/test to ensure diversity). 
 
     **Utilities and helpers** – In addition to the main modules above, there are various utility functions and possibly sub-modules. For example, there might be:
 
-    A module or section for metric calculations (computing AUC, confusion matrix, etc.).
+    · A module or section for metric calculations (computing AUC, confusion matrix, etc.).
 
-    Functions to save and load models (e.g., using Pickle or torch serialization).
+    · Functions to save and load models (e.g., using Pickle or torch serialization).
 
-    Helper functions to parse input files (reading CSV or SMILES files, cleaning data).
+    · Helper functions to parse input files (reading CSV or SMILES files, cleaning data).
 
-    Definitions of hyperparameter grids or default training parameters for each algorithm.
+    · Definitions of hyperparameter grids or default training parameters for each algorithm.
     These utilities support the core functionality and make the code more modular and maintainable.
 
 With this overview, you can begin to locate the areas of the code relevant to the changes you want to make. Below, we discuss specific extension points in PyaiVS.
