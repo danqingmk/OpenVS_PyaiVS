@@ -13,5 +13,5 @@ dependencies:
   - pymdown-extensions
   - pyyaml
   - myst-parser
-   pip:
+  - pip:
     - sphinx-book-theme
