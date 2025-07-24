@@ -22,7 +22,7 @@ Once your dataset is prepared and accessible, you can proceed to use PyaiVS for 
 
 **Parameter Optimization**
 
-Before committing to a specific model, PyaiVS can help you explore which machine learning algorithm and which molecular representation work best for your dataset. This is done via the *model_bulid.running(..., run_type='param') *mode, which performs a parameter optimization (or model selection) routine.
+Before committing to a specific model, PyaiVS can help you explore which machine learning algorithm and which molecular representation work best for your dataset. This is done via the *model_bulid.running(..., run_type='param')* mode, which performs a parameter optimization (or model selection) routine.
 
 When you run PyaiVS in this mode, it will internally try different combinations of algorithms and molecular representations (and possibly hyperparameters) to identify the best-performing model for your data.This may include testing traditional machine learning models (like Random Forest or SVM) using fingerprint descriptors, as well as deep learning models (like Graph Convolutional Networks (GCN), Graph Attention Networks (GAT), or Attentive FP) using graph-based representations.PyaiVS also evaluates different data splitting strategies (e.g., random split vs. scaffold-based split vs. clustering-based split) to ensure the model performance is robust and not an artifact of a particular train/test split.
 
