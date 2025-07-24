@@ -57,7 +57,7 @@ Here are guidelines for adding a new model:
 
 By following these steps, you can incrementally build support for new algorithms into PyaiVS. The modular design of the package (with a unified training pipeline) should facilitate adding new models as long as you hook into the existing interfaces properly.
 
-Adding New Molecular Descriptors
+**Adding New Molecular Descriptors**
 
 Another extension point is introducing new molecular descriptors or representation methods. PyaiVS comes with a set of built-in representations (fingerprints, graphs, etc.), but you may want to use a different descriptor (for example, a custom fingerprint, a descriptor set like RDKit’s topological features, or embeddings from a pretrained model).
 
