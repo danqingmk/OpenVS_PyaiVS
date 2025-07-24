@@ -1,0 +1,20 @@
+# docs/environment.yml 
+name: pyaivs-docs
+channels:
+  - pytorch       # PyTorch package dependency channel
+  - dglteam       # DGL package dependency channel
+  - conda-forge   # Community channel containing the latest packages such as RDKit
+  - defaults
+dependencies:
+  - python=3.8
+  - rdkit
+  - pytorch==1.9.0
+  - torchvision==0.10.0
+  - torchaudio==0.9.0
+  - cudatoolkit=10.2
+  - dgl==0.4.3post2
+  - xgboost
+  - hyperopt
+  - mxnet
+  - requests
+  - pip           # Install pip to enable installing Sphinx and other packages later
