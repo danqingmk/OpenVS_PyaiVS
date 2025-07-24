@@ -9,7 +9,7 @@ In a recent study, PyaiVS was used to screen over 4 million compounds for potent
 
 **Dataset Preparation**
 
-The first step is to prepare your dataset of compounds with known activity against ABCG2. PyaiVS expects the data in a tabular format (commonly a CSV file) containing at least a column for molecular structures and a column for the target variable. Typically, the molecular structure is provided as a SMILES string, and the target variable can be a binary label (e.g., 1 for inhibitor, 0 for non-inhibitor) or a continuous value (e.g., an IC50 or Kd for regression tasks).
+The first step is to prepare your dataset of compounds with known activity against ABCG2. PyaiVS expects the data in a tabular format (commonly a CSV file) containing at least a column for molecular structures and a column for the target variable. Typically, the molecular structure is provided as a SMILES string, and the target variable can be a binary label (e.g., 1 for inhibitor, 0 for non-inhibitor).
 For example, you might have a file ABCG2_inhibitors.csv with the following columns:
 
     SMILES – the chemical structure in SMILES notation (e.g., CCOc1ccc2nc(S(=O)(=O)N)c(Br)nc2c1).
