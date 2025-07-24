@@ -22,7 +22,7 @@ Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing co
     conda create -n pyaivs_env python=3.8 -y
     conda activate pyaivs_env
 
-The above creates and activates an environment named "pyaivs_env" with Python 3.9. (You may choose a different Python version as needed.)
+The above creates and activates an environment named "pyaivs_env" with Python 3.8. (You may choose a different Python version as needed.)
 
 \#. Install RDKit and PyTorch: Use conda to install RDKit and PyTorch. RDKit is available via the conda-forge channel, and PyTorch can be installed from PyTorch’s channel (or conda-forge for CPU-only version).
 
