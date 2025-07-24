@@ -91,19 +91,19 @@ Using the trained model (from the previous step) and the library file, we can ex
 
    # Use the trained model to screen a library of compounds
    screening_results = virtual_screen.model_screen(final_model, 
-                                               "virtual_library.smi", 
+                                               "base.csv", 
                                                output_file="screening_results.csv", 
                                                top_k=50)
 
 In this code:
 
-    The first argument final_model is the model we trained (we are passing the in-memory model object). PyaiVS will also accept a path to a saved model file here if you have the model saved instead of in memory (for example, you could provide something like "best_model.pkl" if such a file was produced).
+    ・The first argument final_model is the model we trained (we are passing the in-memory model object). PyaiVS will also accept a path to a saved model file here if you have the model saved instead of in memory (for example, you could provide something like "best_model.pkl" if such a file was produced).
 
-    "virtual_library.smi" is the path to the file containing the virtual library of compounds to be screened. PyaiVS will read this file and compute the necessary molecular features for each compound (e.g., fingerprints or graphs, matching the representation the model expects).
+    ・"base.csv" is the path to the file containing the virtual library of compounds to be screened. PyaiVS will read this file and compute the necessary molecular features for each compound (e.g., fingerprints or graphs, matching the representation the model expects).
 
-    output_file="screening_results.csv" tells PyaiVS to write the screening outcomes to a CSV file. Typically, this CSV might contain each compound (by an ID or SMILES) along with the predicted score or probability of being an active inhibitor.
+    ・output_file="screening_results.csv" tells PyaiVS to write the screening outcomes to a CSV file. Typically, this CSV might contain each compound (by an ID or SMILES) along with the predicted score or probability of being an active inhibitor.
 
-    top_k=50 is an optional parameter (in this example) specifying that we are interested in the top 50 predicted hits. If supported, PyaiVS will identify the 50 compounds with the highest predicted probability of being ABCG2 inhibitors and could, for instance, write them to a separate file or highlight them in the output. (If top_k is not specified, PyaiVS will simply output scores for all compounds; you can then sort the results to find the top candidates manually.)
+    ・top_k=50 is an optional parameter (in this example) specifying that we are interested in the top 50 predicted hits. If supported, PyaiVS will identify the 50 compounds with the highest predicted probability of being ABCG2 inhibitors and could, for instance, write them to a separate file or highlight them in the output. (If top_k is not specified, PyaiVS will simply output scores for all compounds; you can then sort the results to find the top candidates manually.)
 
 After running model_screen, the variable screening_results may contain the raw predictions (for example, a list of predicted values or a data structure). More importantly, the file screening_results.csv will be created. You can open this file to examine the results of the virtual screening. It might look like:
    SMILES,Predicted_Score
