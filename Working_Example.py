@@ -1,4 +1,4 @@
-# Below is a complete minimal example that you can run to test the system:
+# Below is a complete example that you can run to test the system:
 
 from script import model_bulid, virtual_screen
 
