@@ -1,50 +1,140 @@
 Installation
 ============
-**1. Installation via pip**
 
-PyaiVS is available on the Python Package Index (PyPI) and can be installed using pip. We recommend using Python 3.8+ and installing PyaiVS in a clean virtual environment (such as one created with venv or Conda) to avoid dependency conflicts. To install PyaiVS and its core dependencies with pip, run:
+This document outlines the essential requirements for successfully installing and running PyaiVS. PyaiVS integrates multiple machine learning models, molecular descriptors, and data splitting methods tailored for drug discovery applications.
 
-.. code-block:: bash
+System Requirements
+-------------------
 
-    pip install PyaiVS rdkit torch dgl
+To efficiently run PyaiVS, your system should meet the following specifications:
 
+- **CPU**: Multi-core processor recommended for parallel processing tasks  
+- **RAM**: Minimum 8GB, 16GB or more recommended for handling large datasets  
+- **GPU**: CUDA-compatible GPU (optional, but recommended for deep learning models)  
+- **CUDA**: Version 10.2 or higher (required for GPU acceleration)  
+- **Disk Space**: At least 5GB for software and its dependencies
 
-This single command will install the PyaiVS library along with RDKit (for cheminformatics), PyTorch (for deep learning models), and the Deep Graph Library (DGL) for graph neural networks, if those packages are not already present.
+Python Environment Setup
+------------------------
 
-**2. Installation via conda**
+PyaiVS requires **Python 3.8**. It is strongly recommended to use **Conda** to manage your environment::
 
-Installing PyaiVS with Anaconda/Miniconda is recommended for ease of managing complex dependencies like RDKit and GPU libraries. The following steps demonstrate a conda-based installation:
+    # Create a new conda environment
+    conda create -n pyaivs_env python=3.8
 
-\#. Create a conda environment (optional): Create a new environment for PyaiVS to keep its packages isolated.
-
-.. code-block:: bash
-
-    conda create -n pyaivs_env python=3.8 -y
+    # Activate the environment
     conda activate pyaivs_env
 
-The above creates and activates an environment named "pyaivs_env" with Python 3.8. (You may choose a different Python version as needed.)
+Core Dependency Installation
+----------------------------
 
-\#. Install RDKit and PyTorch: Use conda to install RDKit and PyTorch. RDKit is available via the conda-forge channel, and PyTorch can be installed from PyTorch’s channel (or conda-forge for CPU-only version).
+The following core dependencies must be installed in the specified order:
 
-.. code-block:: bash
+1. RDKit
+^^^^^^^^
 
-   conda install -c conda-forge rdkit
-   conda install -c pytorch pytorch torchvision torchaudio cpuonly
+RDKit is essential for molecular structure processing and generating molecular descriptors::
 
-The first line installs RDKit (and its dependencies) from conda-forge. The second line installs PyTorch and related packages from the official PyTorch channel (the cpuonly tag ensures the CPU version is installed; omit it or specify a cudatoolkit version if you want GPU support). You can adjust the PyTorch command to a specific CUDA toolkit version (e.g., adding cudatoolkit=11.8) for GPU acceleration.
+    conda install rdkit -c conda-forge
 
-Optional: If you plan to use graph-based models, you should also install DGL. You can install the CPU version of DGL via conda-forge (if available) or via pip. For example:
+2. PyTorch
+^^^^^^^^^^
 
-.. code-block:: bash
+PyaiVS uses **PyTorch 1.9.0** for deep learning models::
 
-   pip install dgl
+    conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch
 
-(For GPU support in DGL, use the appropriate dgl-cuda package via pip or conda, matching your CUDA version.)
+Ensure your CUDA version is compatible (10.2 or higher). For CPU-only installations::
 
-\#. Install PyaiVS: With the environment prepared and core dependencies installed, you can now install PyaiVS itself.
+    conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cpuonly -c pytorch
 
-.. code-block:: bash
+3. Deep Graph Library (DGL)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   pip install PyaiVS
+DGL is required for graph-based models::
 
-This will download and install the PyaiVS package from PyPI into your conda environment.
+    conda install -c dglteam dgl==0.4.3post2
+
+4. Additional Required Packages
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Install these extra packages required by different PyaiVS components::
+
+    conda install xgboost hyperopt pandas scikit-learn numpy
+    pip install mxnet requests
+
+These dependencies support various machine learning algorithms used in the package:
+
++------------------------+-----------------------------------------+
+| Model Type             | Required Packages                       |
++========================+=========================================+
+| Machine Learning       | scikit-learn, xgboost                   |
++------------------------+-----------------------------------------+
+| Deep Learning          | pytorch, dgl                            |
++------------------------+-----------------------------------------+
+| Hyperparameter Opt.    | hyperopt                                |
++------------------------+-----------------------------------------+
+| Data Processing        | pandas, numpy                           |
++------------------------+-----------------------------------------+
+
+Installing the PyaiVS Package
+-----------------------------
+
+Once all dependencies are set up, install the PyaiVS package::
+
+    pip install PyaiVS
+
+Installation Verification
+-------------------------
+
+To verify that PyaiVS is installed correctly, run the following simple test::
+
+    # Import main modules
+    from script import model_bulid, virtual_screen
+
+    # This should execute without errors
+    print("PyaiVS is installed correctly!")
+
+Troubleshooting
+---------------
+
+CUDA Compatibility Issues
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you encounter CUDA-related errors:
+
+- Use ``nvidia-smi`` to verify your CUDA version  
+- Ensure the correct CUDA version of PyTorch is installed  
+- Set the appropriate environment variables::
+
+    import os
+    os.environ['PYTHONHASHSEED'] = str(42)
+    os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
+    os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":16:8"
+
+Memory Issues
+^^^^^^^^^^^^^
+
+If you run into memory errors when handling large datasets or complex models:
+
+- Reduce batch size in model configuration  
+- Use CPU mode if GPU memory is limited  
+- Process datasets in chunks whenever possible
+
+Example of specifying CPU device::
+
+    model_bulid.running('./dataset/abcg2.csv', run_type='result', cpus=4)
+
+Package Dependency Conflicts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you face dependency conflicts:
+
+- Create a new Conda environment  
+- Install dependencies in the exact order listed above  
+- Avoid mixing conda and pip installs for the same package
+
+Next Steps
+----------
+
+After installation, refer to the **Getting Started Guide** for your first virtual screening task using PyaiVS.
