@@ -17,10 +17,10 @@
 
 ```bash
 # Create a Python 3.8 environment
-conda create -n pyaivs python=3.8
+conda create -n pyaivs_env python=3.8
 
 # Activate the environment
-conda activate pyaivs
+conda activate pyaivs_env
 
 # Install dependencies
 conda install rdkit
