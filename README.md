@@ -98,3 +98,14 @@ Saved in the screening output folder:
 ./dataset/abcg2/screen/
 └── screened_compounds.csv   # Screened compounds passing the threshold
 ``` 
+
+## License
+
+This project is licensed under the MIT License.
+
+## Documentation and Support
+
+For advanced usage, detailed parameter descriptions, and debugging tips, please refer to the full documentation on Read the Docs: 👉PyaiVS Documentation https://openvs-pyaivs.readthedocs.io/en/latest/index.html
+If you encounter any issues or have questions, feel free to reach out:
+📧Contact: wangmukuo@163.com
+We welcome feedback, feature requests, and contributions from the community!
