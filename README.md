@@ -32,10 +32,7 @@ pip install PyaiVS
 
 ## Basic Workflow
 
-The workflow of OpenVS_PyaiVS consists of two main steps:
-
+The workflow of OpenVS_PyaiVS consists of two main steps
     1. Train models and optimize parameters
-
     2. Screen compounds using the best-performing model
-
 Below is a code example:
