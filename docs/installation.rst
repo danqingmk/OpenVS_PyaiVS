@@ -137,4 +137,4 @@ If you face dependency conflicts:
 Next Steps
 ----------
 
-After installation, refer to the **Getting Started Guide** for your first virtual screening task using PyaiVS.
+After installation, refer to the **Tutorial** for your first virtual screening task using PyaiVS.
