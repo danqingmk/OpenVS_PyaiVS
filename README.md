@@ -63,6 +63,7 @@ virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g.,
                             sep=';',          # File delimiter
                             smiles_col='smiles')  # Column name containing SMILES strings
 
+
 ## Output
 
 After running the full workflow, the following results will be generated:
@@ -93,4 +94,3 @@ Saved in the screening output folder:
 ```bash
 ./dataset/abcg2/screen/
 └── screened_compounds.csv   # Screened compounds passing the threshold
-
