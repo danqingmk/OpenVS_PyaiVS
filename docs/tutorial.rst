@@ -32,7 +32,7 @@ The dataset should be in CSV format and include at least:
 Example training dataset:
 
 +-----------------------------+--------+
-| SMILES                      | 活性   |
+| SMILES                      | lable   |
 +=============================+========+
 | CC1=CC=CC=C1C(=O)NC2=CC=... | 1      |
 +-----------------------------+--------+
