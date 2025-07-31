@@ -57,8 +57,40 @@ model_bulid.running('your_dataset.csv',
 # Step 3: Screen compounds using the best model
 virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g., SVM, selected based on evaluation metrics)
                             split='random',   # Best data splitting method (e.g., 'random', selected based on metrics)
-                            FP='MACCS',       # Best fingerprint type (e.g., MACCS, selected based on metrics)
+                            FP='ECFP',       # Best fingerprint type (e.g., ECFP, selected based on metrics)
                             model_dir='./dataset/model_save',  # Path to the saved model
                             screen_file='./database/compound_library.csv',  # Compound library to be screened
                             sep=';',          # File delimiter
                             smiles_col='smiles')  # Column name containing SMILES strings
+
+## Output
+
+After running the full workflow, the following results will be generated:
+
+### Model Optimization Results
+
+Stored in the specified output directory:
+
+```bash
+./dataset/abcg2/
+├── param_save/       # Optimal hyperparameters for each model
+├── model_save/       # Saved model files
+├── result_save/      # Performance metrics for all models
+
+### Model Recommendation (Printed to Console)
+
+The models are ranked by performance metrics such as AUC-ROC, F1-score, accuracy, and MCC:
+
+```bash
+      model    des   split   auc_roc  f1_score       acc       mcc
+    2   SVM  ECFP4  random  0.969047  0.903497  0.917723  0.831872
+    4   DNN  ECFP4  random  0.961781  0.881708  0.898430  0.426201
+                                  …
+### Virtual Screening Results
+
+Saved in the screening output folder:
+
+```bash
+./dataset/abcg2/screen/
+└── screened_compounds.csv   # Screened compounds passing the threshold
+
