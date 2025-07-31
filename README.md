@@ -13,7 +13,7 @@
 
 ## Installation
 
-###. Installation via Conda
+### Installation via Conda
 
 ```bash
 # Create a Python 3.8 environment
