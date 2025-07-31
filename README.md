@@ -38,3 +38,27 @@ The workflow of PyaiVS consists of two main steps：
 2. Screen compounds using the best-performing model
 
 Below is a code example:
+
+```bash
+from script import model_bulid, virtual_screen
+
+# Step 1: Train models and find optimal parameters
+model_bulid.running('your_dataset.csv',      # Input dataset
+                    out_dir='./dataset',     # Output directory
+                    run_type='param',        # Parameter optimization mode
+                    cpus=4)                  # Number of CPUs to use
+
+# Step 2: Generate results and get model recommendations
+model_bulid.running('your_dataset.csv', 
+                    out_dir='./dataset',
+                    run_type='result',       # Result computation mode
+                    cpus=4)
+
+# Step 3: Screen compounds using the best model
+virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g., SVM, selected based on evaluation metrics)
+                            split='random',   # Best data splitting method (e.g., 'random', selected based on metrics)
+                            FP='MACCS',       # Best fingerprint type (e.g., MACCS, selected based on metrics)
+                            model_dir='./dataset/model_save',  # Path to the saved model
+                            screen_file='./database/compound_library.csv',  # Compound library to be screened
+                            sep=';',          # File delimiter
+                            smiles_col='smiles')  # Column name containing SMILES strings
