@@ -9998,3 +9998,4 @@ CCOc(cc1)ccc1-c1nc2ccccc2c(C(Nc2n[nH]cn2)=O)c1,299762,1,0.89
 Cc(ccc(NC(c1ccc(CN(c2cc(-c(cc3)ccc3OC)nn2CC2)C2=O)cc1)=O)c1)c1F,164328,1,0.82
 Cc(cccc1)c1Nc1nc(Nc(cc2)ccc2[N+]([O-])=O)nc(N/N=C/c(cc2)ccc2N(C)C)n1,138371,1,0.97
 O=C(C1c2c(-c(cc3)ccc3F)[nH]c(NC(N3)=O)c2C3=O)Nc2c1cccc2,143116,1,0.99
+COc(cc1)cc(OC)c1-c1noc(-c2cc(-c3cccs3)n[nH]2)n1,125976,1,0.89
