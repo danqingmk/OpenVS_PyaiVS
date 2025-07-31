@@ -3,7 +3,7 @@ Tutorial
 
 **Welcome to the PyaiVS tutorial**. In this tutorial, we will demonstrate a complete virtual screening workflow for finding inhibitors of the ABCG2 transporter using PyaiVS. The steps include **preparing a dataset of known actives/inactives, optimizing the model parameters, training and evaluating a predictive model, and then using that model to screen a library of new compounds**.
 
-ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cassette transporter implicated in multidrug resistance. Identifying effective inhibitors of ABCG2 can help overcome chemotherapy resistance, which makes it an interesting case for virtual screening. PyaiVS provides an integrated platform to build machine learning models for such tasks, combining multiple algorithms, molecular representations, and data splitting strategies.
+ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cassette transporter implicated in multidrug resistance. Identifying effective inhibitors of ABCG2 can help overcome chemotherapy resistance, which makes it an interesting case for virtual screening.
 
 Before diving into the code, let’s understand how to use this tool for virtual screening.  
 OpenVS_PyaiVS follows a two-step workflow:
