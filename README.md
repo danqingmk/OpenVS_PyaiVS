@@ -13,16 +13,16 @@
 
 ## Installation
 
-### 1. Set Up the Conda Environment
+###. Installation via Conda
 
 ```bash
 # Create a Python 3.8 environment
 conda create -n pyaivs python=3.8
 
-### 2. Activate the environment
+# Activate the environment
 conda activate pyaivs
 
-### 3. Install dependencies
+# Install dependencies
 conda install rdkit
 conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch  # Ensure CUDA >= 10.2
 conda install -c dglteam dgl==0.4.3post2
