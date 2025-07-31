@@ -62,7 +62,7 @@ virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g.,
                             screen_file='./database/compound_library.csv',  # Compound library to be screened
                             sep=';',          # File delimiter
                             smiles_col='smiles')  # Column name containing SMILES strings
-
+``` 
 
 ## Output
 
@@ -77,6 +77,7 @@ Stored in the specified output directory:
 ├── param_save/       # Optimal hyperparameters for each model
 ├── model_save/       # Saved model files
 ├── result_save/      # Performance metrics for all models
+```
 
 ### Model Recommendation (Printed to Console)
 
@@ -87,6 +88,8 @@ The models are ranked by performance metrics such as AUC-ROC, F1-score, accuracy
     2   SVM  ECFP4  random  0.969047  0.903497  0.917723  0.831872
     4   DNN  ECFP4  random  0.961781  0.881708  0.898430  0.426201
                                   …
+```
+
 ### Virtual Screening Results
 
 Saved in the screening output folder:
@@ -94,3 +97,4 @@ Saved in the screening output folder:
 ```bash
 ./dataset/abcg2/screen/
 └── screened_compounds.csv   # Screened compounds passing the threshold
+``` 
