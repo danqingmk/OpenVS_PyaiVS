@@ -148,13 +148,13 @@ The following is a complete script that performs both model building and virtual
 
     # Step 1: Build and optimize models
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset',
+                        out_dir='./dataset/abcg2/this_work',
                         run_type='param',
                         cpus=4)
 
     # Step 2: Evaluate models and find the best one
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset',
+                        out_dir='./dataset/abcg2/this_work',
                         run_type='result',
                         cpus=4)
 
@@ -162,16 +162,16 @@ The following is a complete script that performs both model building and virtual
     virtual_screen.model_screen(model='GCN',
                                 split='cluster',
                                 FP='None',
-                                model_dir='./dataset/abcg2/model_save',
+                                model_dir='./dataset/abcg2/this_work/model_save',
                                 screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
                                 smiles_col='None')
 
 This workflow will generate the following output:
 
-- **Optimized model parameters**: ``./dataset/abcg2/param_save/``  
-- **Model performance results**: ``./dataset/abcg2/result_save/``  
-- **Saved trained models**: ``./dataset/abcg2/model_save/``  
-- **Virtual screening results**: ``./dataset/abcg2/screen/``
+- **Optimized model parameters**: ``./dataset/abcg2/this_work/param_save/``  
+- **Model performance results**: ``./dataset/abcg2/this_work/result_save/``  
+- **Saved trained models**: ``./dataset/abcg2/this_work/model_save/``  
+- **Virtual screening results**: ``./dataset/abcg2/this_work/screen/``
 
 Congratulations! You should now have successfully completed your first virtual screening task using PyaiVS.
