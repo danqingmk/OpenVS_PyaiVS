@@ -63,13 +63,13 @@ OpenVS_PyaiVS allows training multiple models with different configurations and 
     model_bulid.running('./dataset/abcg2.csv',
                         out_dir='./dataset/abcg2/this_work',
                         run_type='param',
-                        cpus=4)
+                        cpus=128)
 
     # Evaluate models and identify the best one
     model_bulid.running('./dataset/abcg2.csv',
                         out_dir='./dataset/abcg2/this_work',
                         run_type='result',
-                        cpus=4)
+                        cpus=128)
 
 What this does:
 
@@ -150,13 +150,13 @@ The following is a complete script that performs both model building and virtual
     model_bulid.running('./dataset/abcg2.csv',
                         out_dir='./dataset/abcg2/this_work',
                         run_type='param',
-                        cpus=4)
+                        cpus=128)
 
     # Step 2: Evaluate models and find the best one
     model_bulid.running('./dataset/abcg2.csv',
                         out_dir='./dataset/abcg2/this_work',
                         run_type='result',
-                        cpus=4)
+                        cpus=128)
 
     # Step 3: Use the best model for virtual screening
     virtual_screen.model_screen(model='GCN',
