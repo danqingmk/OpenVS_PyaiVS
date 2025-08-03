@@ -44,7 +44,7 @@ from script import model_bulid, virtual_screen
 
 # Step 1: Train models and find optimal parameters
 model_bulid.running('your_dataset.csv',      # Input dataset
-                    out_dir='./dataset',     # Output directory
+                    out_dir='./dataset/abcg2',     # Output directory
                     run_type='param',        # Parameter optimization mode
                     cpus=4)                  # Number of CPUs to use
 
