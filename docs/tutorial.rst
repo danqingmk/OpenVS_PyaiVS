@@ -61,13 +61,13 @@ OpenVS_PyaiVS allows training multiple models with different configurations and 
 
     # Train models with parameter optimization
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset',
+                        out_dir='./dataset/abcg2',
                         run_type='param',
                         cpus=4)
 
     # Evaluate models and identify the best one
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset',
+                        out_dir='./dataset/abcg2',
                         run_type='result',
                         cpus=4)
 
@@ -95,13 +95,13 @@ After building and optimizing the model, use the best model to perform virtual s
 
     from script import virtual_screen
 
-    virtual_screen.model_screen(model='SVM',
-                                split='random',
-                                FP='MACCS',
+    virtual_screen.model_screen(model='GCN',
+                                split='cluster',
+                                FP='None',
                                 model_dir='./dataset/abcg2/model_save',
-                                screen_file='./database/base.csv',
+                                screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
-                                smiles_col='smiles')
+                                smiles_col='None')
 
 **Key arguments of `model_screen()` function**:
 
@@ -159,13 +159,13 @@ The following is a complete script that performs both model building and virtual
                         cpus=4)
 
     # Step 3: Use the best model for virtual screening
-    virtual_screen.model_screen(model='SVM',
-                                split='random',
-                                FP='MACCS',
+    virtual_screen.model_screen(model='GCN',
+                                split='cluster',
+                                FP='None',
                                 model_dir='./dataset/abcg2/model_save',
-                                screen_file='./database/base.csv',
+                                screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
-                                smiles_col='smiles')
+                                smiles_col='None')
 
 This workflow will generate the following output:
 
