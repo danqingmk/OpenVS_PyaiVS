@@ -57,7 +57,7 @@ model_bulid.running('./dataset/abcg2.csv',
 # Step 3: Screen compounds using the best model
 virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g., SVM, selected based on evaluation metrics)
                             split='random',   # Best data splitting method (e.g., 'random', selected based on metrics)
-                            FP='ECFP',       # Best fingerprint type (e.g., ECFP, selected based on metrics)
+                            FP='MACCS',       # Best fingerprint type (e.g., MACCS, selected based on metrics)
                             model_dir='./dataset/abcg2/working_example/model_save',  # Path to the saved model
                             screen_file='./database/compound_library.csv',  # Compound library to be screened
                             sep=';',          # File delimiter
@@ -85,8 +85,8 @@ The models are ranked by performance metrics such as AUC-ROC, F1-score, accuracy
 
 ```bash
       model    des   split   auc_roc  f1_score       acc       mcc
-    2   SVM  ECFP4  random  0.969047  0.903497  0.917723  0.831872
-    4   SVM  MACCS  random  0.961781  0.881708  0.898430  0.426201
+    2   SVM  MACCS  random  0.969047  0.903497  0.917723  0.831872
+    4   SVM  ECFP4  random  0.961781  0.881708  0.898430  0.426201
                                   …
 ```
 
