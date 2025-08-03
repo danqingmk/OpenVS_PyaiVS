@@ -101,7 +101,7 @@ After building and optimizing the model, use the best model to perform virtual s
                                 model_dir='./dataset/abcg2/this_work/model_save',
                                 screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
-                                smiles_col='None')
+                                smiles_col='smiles')
 
 **Key arguments of `model_screen()` function**:
 
@@ -165,7 +165,7 @@ The following is a complete script that performs both model building and virtual
                                 model_dir='./dataset/abcg2/this_work/model_save',
                                 screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
-                                smiles_col='None')
+                                smiles_col='smiles')
 
 This workflow will generate the following output:
 
