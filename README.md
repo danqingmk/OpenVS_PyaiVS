@@ -44,13 +44,13 @@ from script import model_bulid, virtual_screen
 
 # Step 1: Train models and find optimal parameters
 model_bulid.running('your_dataset.csv',      # Input dataset
-                    out_dir='./dataset/abcg2',     # Output directory
+                    out_dir='./dataset/abcg2/working_example',     # Output directory
                     run_type='param',        # Parameter optimization mode
                     cpus=4)                  # Number of CPUs to use
 
 # Step 2: Generate results and get model recommendations
 model_bulid.running('your_dataset.csv', 
-                    out_dir='./dataset/abcg2',
+                    out_dir='./dataset/abcg2/working_example',
                     run_type='result',       # Result computation mode
                     cpus=4)
 
@@ -58,7 +58,7 @@ model_bulid.running('your_dataset.csv',
 virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g., SVM, selected based on evaluation metrics)
                             split='random',   # Best data splitting method (e.g., 'random', selected based on metrics)
                             FP='ECFP',       # Best fingerprint type (e.g., ECFP, selected based on metrics)
-                            model_dir='./dataset/abcg2/model_save',  # Path to the saved model
+                            model_dir='./dataset/abcg2/working_example/model_save',  # Path to the saved model
                             screen_file='./database/compound_library.csv',  # Compound library to be screened
                             sep=';',          # File delimiter
                             smiles_col='smiles')  # Column name containing SMILES strings
@@ -73,7 +73,7 @@ After running the full workflow, the following results will be generated:
 Stored in the specified output directory:
 
 ```bash
-./dataset/abcg2/
+./dataset/abcg2/working_example/
 ├── param_save/       # Optimal hyperparameters for each model
 ├── model_save/       # Saved model files
 ├── result_save/      # Performance metrics for all models
@@ -95,7 +95,7 @@ The models are ranked by performance metrics such as AUC-ROC, F1-score, accuracy
 Saved in the screening output folder:
 
 ```bash
-./dataset/abcg2/screen/
+./dataset/abcg2/working_example/screen/
 └── screened_compounds.csv   # Screened compounds passing the threshold
 ``` 
 
