@@ -86,7 +86,7 @@ The models are ranked by performance metrics such as AUC-ROC, F1-score, accuracy
 ```bash
       model    des   split   auc_roc  f1_score       acc       mcc
     2   SVM  ECFP4  random  0.969047  0.903497  0.917723  0.831872
-    4   DNN  ECFP4  random  0.961781  0.881708  0.898430  0.426201
+    4   SVM  MACCS  random  0.961781  0.881708  0.898430  0.426201
                                   …
 ```
 
