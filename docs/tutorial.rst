@@ -61,13 +61,13 @@ OpenVS_PyaiVS allows training multiple models with different configurations and 
 
     # Train models with parameter optimization
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset/abcg2',
+                        out_dir='./dataset/abcg2/this_work',
                         run_type='param',
                         cpus=4)
 
     # Evaluate models and identify the best one
     model_bulid.running('./dataset/abcg2.csv',
-                        out_dir='./dataset/abcg2',
+                        out_dir='./dataset/abcg2/this_work',
                         run_type='result',
                         cpus=4)
 
@@ -98,7 +98,7 @@ After building and optimizing the model, use the best model to perform virtual s
     virtual_screen.model_screen(model='GCN',
                                 split='cluster',
                                 FP='None',
-                                model_dir='./dataset/abcg2/model_save',
+                                model_dir='./dataset/abcg2/this_work/model_save',
                                 screen_file='./database/compounds_to_screen.csv',
                                 sep=';',
                                 smiles_col='None')
@@ -130,7 +130,7 @@ The output file will be named after your input file and suffixed with the probab
 
 .. code-block:: text
 
-    dataset/abcg2/screen/base_screen_0.5.csv
+    dataset/abcg2/this_work/screen/gcn_cluster_gcn_screen_0.8.csv
 
 This file includes SMILES strings for compounds that:
 
