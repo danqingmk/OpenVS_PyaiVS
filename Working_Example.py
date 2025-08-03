@@ -4,6 +4,7 @@ from script import model_bulid, virtual_screen
 
 # Train and optimize an SVM model using MACCS fingerprints
 model_bulid.running('./dataset/abcg2.csv',
+                    out_dir='./dataset/abcg2/working_example',   # Output directory
                     model=['SVM'],         # Use only SVM
                     FP=['MACCS'],          # Use only MACCS fingerprint
                     split=['random'],      # Use random split
@@ -12,6 +13,7 @@ model_bulid.running('./dataset/abcg2.csv',
 
 # Retrieve results and model recommendations
 model_bulid.running('./dataset/abcg2.csv',
+                    out_dir='./dataset/abcg2/working_example',
                     model=['SVM'], 
                     FP=['MACCS'],
                     split=['random'],
