@@ -21,7 +21,7 @@ model_bulid.running('./dataset/abcg2.csv',
 virtual_screen.model_screen(model='SVM',
                             split='random',
                             FP='MACCS',
-                            model_dir='./abcg2/model_save',
+                            model_dir='./dataset/abcg2/working_example/model_save',
                             screen_file='compounds_to_screen.csv',
                             smiles_col=0)   # First column contains SMILES
 
