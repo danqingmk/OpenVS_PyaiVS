@@ -96,7 +96,7 @@ Saved in the screening output folder:
 
 ```bash
 ./dataset/abcg2/working_example/screen/
-└── screened_compounds.csv   # Screened compounds passing the threshold
+└── working_example_screen_0.5.csv   # Screened compounds passing the threshold
 ``` 
 
 ## License
