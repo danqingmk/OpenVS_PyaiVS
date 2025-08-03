@@ -43,13 +43,13 @@ Below is a code example:
 from script import model_bulid, virtual_screen
 
 # Step 1: Train models and find optimal parameters
-model_bulid.running('your_dataset.csv',      # Input dataset
+model_bulid.running('./dataset/abcg2.csv',      # Input dataset
                     out_dir='./dataset/abcg2/working_example',     # Output directory
                     run_type='param',        # Parameter optimization mode
                     cpus=4)                  # Number of CPUs to use
 
 # Step 2: Generate results and get model recommendations
-model_bulid.running('your_dataset.csv', 
+model_bulid.running('./dataset/abcg2.csv', 
                     out_dir='./dataset/abcg2/working_example',
                     run_type='result',       # Result computation mode
                     cpus=4)
