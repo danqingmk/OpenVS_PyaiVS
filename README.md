@@ -50,7 +50,7 @@ model_bulid.running('your_dataset.csv',      # Input dataset
 
 # Step 2: Generate results and get model recommendations
 model_bulid.running('your_dataset.csv', 
-                    out_dir='./dataset',
+                    out_dir='./dataset/abcg2',
                     run_type='result',       # Result computation mode
                     cpus=4)
 
@@ -58,7 +58,7 @@ model_bulid.running('your_dataset.csv',
 virtual_screen.model_screen(model='SVM',      # Best-performing algorithm (e.g., SVM, selected based on evaluation metrics)
                             split='random',   # Best data splitting method (e.g., 'random', selected based on metrics)
                             FP='ECFP',       # Best fingerprint type (e.g., ECFP, selected based on metrics)
-                            model_dir='./dataset/model_save',  # Path to the saved model
+                            model_dir='./dataset/abcg2/model_save',  # Path to the saved model
                             screen_file='./database/compound_library.csv',  # Compound library to be screened
                             sep=';',          # File delimiter
                             smiles_col='smiles')  # Column name containing SMILES strings
