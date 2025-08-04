@@ -4,7 +4,8 @@ Developer Guide
 This guide is intended for developers and advanced users who want to understand the internals of PyaiVS or extend its functionality. It provides an overview of the code structure and instructions on how to add new algorithms, descriptors, or split strategies to the framework. 
 PyaiVS was designed to unify various components of AI-driven virtual screening into a single package. As such, it integrates multiple machine learning models, feature representations, and data handling techniques under the hood. Understanding how these pieces fit together will help you modify or extend the software.
 
-**1. Overview of Code Structure**
+1. Overview of Code Structure
+-----------------------------
 
 The PyaiVS codebase is organized into modules that correspond to different parts of the virtual screening workflow. Below is an overview of key components:
 
@@ -37,7 +38,8 @@ The PyaiVS codebase is organized into modules that correspond to different parts
 
 With this overview, you can begin to locate the areas of the code relevant to the changes you want to make. Below, we discuss specific extension points in PyaiVS.
 
-**2. Extending PyaiVS**
+2. Extending PyaiVS
+-------------------
 
 PyaiVS can be extended with new machine learning models, molecular descriptors, and data splitting strategies. Adding any of these requires implementing the component and integrating it so the framework recognizes it. The process is similar for each type:
 
