@@ -6,7 +6,7 @@ Tutorial
 ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cassette transporter implicated in multidrug resistance. Identifying effective inhibitors of ABCG2 can help overcome chemotherapy resistance, which makes it an interesting case for virtual screening.
 
 Before diving into the code, let’s understand how to use this tool for virtual screening.  
-OpenVS_PyaiVS follows a two-step workflow:
+PyaiVS follows a two-step workflow:
 
 1. **Model Building**: Train and optimize classification models on your dataset  
 2. **Virtual Screening**: Use the best model to screen a compound library
