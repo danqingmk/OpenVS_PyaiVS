@@ -219,7 +219,7 @@ Training the Regression Model
         cpus=4                          # Number of CPUs to use
     )
 
-In this code, we specify that we want to train an **SVM** model using **MACCS** molecular fingerprints and evaluate using **RMSE** (Root Mean Squared Error). The data is split randomly using the `random` method, but other options like `scaffold` or `cluster` can also be used.
+In this code, we specify that we want to train an ``SVM`` model using ``MACCS`` molecular fingerprints and evaluate using ``RMSE`` (Root Mean Squared Error). The data is split randomly using the ``random`` method, but other options like ``scaffold`` or ``cluster`` can also be used.
 
 Activity Prediction
 ^^^^^^^^^^^^^^^^^^^
@@ -230,7 +230,7 @@ Once the model is trained and evaluated, you can use the trained model to screen
 
     from script import virtual_screen
 
-    # Step 2: Screen compounds using the best model
+    # Step 2: Activity Prediction with the Best Model
     virtual_screen.model_screen(
         best_settings=best_settings,                     # Pass the trained model configuration
         screen_file="./database/compounds_to_screen.csv",   # Path to the compound library to be screened
@@ -250,3 +250,5 @@ After activity prediction is completed, **PyaiVS** will generate a CSV file cont
     CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,7.22
     CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.95
     ...
+
+Congratulations! You have now successfully completed your regression task using PyaiVS, predicting activity values for your compounds.
