@@ -196,28 +196,28 @@ The BACE dataset contains the SMILES representation of compounds and their corre
     CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.93
     ...
 
-Here, the `mol` column represents the SMILES of the compound, and `pIC50` is the target variable, representing the compound’s binding affinity to BACE-1.
+Here, the ``mol`` column represents the SMILES of the compound, and ``pIC50`` is the target variable, representing the compound’s binding affinity to BACE-1.
 
 Training the Regression Model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **PyaiVS** provides a simple interface for training regression models. Below is an example of how to train a model to predict pIC50 values:
 
-```python
-from script import model_bulid
+.. code-block:: python
 
-# Step 1: Train the model and optimize hyperparameters
-best_settings = model_bulid.running(
-    './dataset/example_reg.csv',    # Path to the input data
-    out_dir='./out_reg',            # Output directory to save trained models
-    split=["random"],               # Data splitting method (here we use random)
-    model=["SVM"],                  # Models to use (supports SVM, XGBoost, Random Forest, etc.)
-    FP=["MACCS"],                   # Molecular fingerprints (here we use MACCS)
-    key="rmse",                     # Evaluation metric (here we use RMSE)
-    task_type="reg",                # Specify as a regression task
-    cpus=4                          # Number of CPUs to use
-)
-```
+    from script import model_bulid
+
+    # Step 1: Train the model and optimize hyperparameters
+    best_settings = model_bulid.running(
+        './dataset/example_reg.csv',    # Path to the input data
+        out_dir='./out_reg',            # Output directory to save trained models
+        split=["random"],               # Data splitting method (here we use random)
+        model=["SVM"],                  # Models to use (supports SVM, XGBoost, Random Forest, etc.)
+        FP=["MACCS"],                   # Molecular fingerprints (here we use MACCS)
+        key="rmse",                     # Evaluation metric (here we use RMSE)
+        task_type="reg",                # Specify as a regression task
+        cpus=4                          # Number of CPUs to use
+    )
 
 In this code, we specify that we want to train an **SVM** model using **MACCS** molecular fingerprints and evaluate using **RMSE** (Root Mean Squared Error). The data is split randomly using the `random` method, but other options like `scaffold` or `cluster` can also be used.
 
@@ -226,27 +226,27 @@ Activity Prediction
 
 Once the model is trained and evaluated, you can use the trained model to screen a set of compounds and predict their pIC50 values. Below is an example of how to screen compounds:
 
-```python
-from script import virtual_screen
+.. code-block:: python
 
-# Step 2: Screen compounds using the best model
-virtual_screen.model_screen(
-    best_settings=best_settings,                     # Pass the trained model configuration
-    screen_file="./database/compounds_to_screen.csv",   # Path to the compound library to be screened
-    smiles_col="smiles",                             # SMILES column name
-    output_file="./result/result_svm_maccs_random_rmse_reg.csv",  # Output file name
-    task_type="reg"                                  # Specify as a regression task
-)
-```
+    from script import virtual_screen
+
+    # Step 2: Screen compounds using the best model
+    virtual_screen.model_screen(
+        best_settings=best_settings,                     # Pass the trained model configuration
+        screen_file="./database/compounds_to_screen.csv",   # Path to the compound library to be screened
+        smiles_col="smiles",                             # SMILES column name
+        output_file="./result/result_svm_maccs_random_rmse_reg.csv",  # Output file name
+        task_type="reg"                                  # Specify as a regression task
+    )
 
 Output Results
 ^^^^^^^^^^^^^^
 
 After activity prediction is completed, **PyaiVS** will generate a CSV file containing the predicted pIC50 values for each compound. The output file will contain the SMILES string of each compound along with its corresponding predicted pIC50 value. For example:
 
-```
-smiles,predict_value
-CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,7.22
-CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.95
-...
-```
+.. code-block:: text
+
+    smiles,predict_value
+    CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,7.22
+    CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.95
+    ...
