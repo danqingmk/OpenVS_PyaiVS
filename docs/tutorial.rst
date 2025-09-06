@@ -191,9 +191,9 @@ The BACE dataset contains the SMILES representation of compounds and their corre
 
 .. code-block:: text
 
-mol,pIC50
-CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,7.25
-CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.93
+    mol,pIC50
+    CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,7.25
+    CC(C)(C)C(=O)N1CCN(CC1)C2CCCCC2,6.93
     ...
 
 Here, the `mol` column represents the SMILES of the compound, and `pIC50` is the target variable, representing the compound’s binding affinity to BACE-1.
