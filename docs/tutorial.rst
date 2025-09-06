@@ -1,7 +1,10 @@
 Tutorial
 ========
 
-**Welcome to the PyaiVS tutorial**. In this tutorial, we will demonstrate a complete virtual screening workflow for finding inhibitors of the ABCG2 transporter using PyaiVS. The steps include **preparing a dataset of known actives/inactives, optimizing the model parameters, training and evaluating a predictive model, and then using that model to screen a library of new compounds**.
+**Welcome to the PyaiVS tutorial**. In this tutorial, we will demonstrate a complete virtual screening workflow for finding inhibitors of the ABCG2 transporter using PyaiVS. The steps include **preparing a dataset of known actives/inactives, optimizing the model parameters, training and evaluating a predictive model, and then using that model to screen a library of new compounds**. Additionally, we will also show how to apply PyaiVS for **regression tasks**, using the **BACE dataset** to predict pIC50 values of compounds.
+
+The virtual screening of ABCG2 inhibitors.
+------------------------------------------
 
 ABCG2 (also known as the breast cancer resistance protein) is an ATP-binding cassette transporter implicated in multidrug resistance. Identifying effective inhibitors of ABCG2 can help overcome chemotherapy resistance, which makes it an interesting case for virtual screening.
 
@@ -12,7 +15,7 @@ PyaiVS follows a two-step workflow:
 2. **Virtual Screening**: Use the best model to screen a compound library
 
 Prerequisites
--------------
+^^^^^^^^^^^^^
 
 Before you begin, make sure you have:
 
@@ -21,7 +24,7 @@ Before you begin, make sure you have:
 - A compound library to screen (CSV format with SMILES)
 
 Step 1: Prepare Your Data
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For model building, you need a dataset where molecules are labeled as active or inactive.  
 The dataset should be in CSV format and include at least:
@@ -50,7 +53,7 @@ For the screening compound library, you need a CSV file with at least a SMILES c
     ...
 
 Step 2: Build and Optimize Your Model
--------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Start by building a model using your training dataset.  
 OpenVS_PyaiVS allows training multiple models with different configurations and selects the best one automatically.
@@ -87,7 +90,7 @@ What this does:
 - ``FP``: Molecular fingerprint type (`MACCS`, `ECFP4`, `pubchem`, or `all`)
 
 Step 3: Run Virtual Screening
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After building and optimizing the model, use the best model to perform virtual screening:
 
@@ -123,7 +126,7 @@ The function will:
 - Save all compounds that pass into a new CSV file
 
 Step 4: Check the Results
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After screening, results can be found in a folder named ``screen`` (created at the same level as ``model_save``).  
 The output file will be named after your input file and suffixed with the probability threshold:
@@ -138,7 +141,7 @@ This file includes SMILES strings for compounds that:
 - Pass Lipinski’s Rule of Five (i.e., drug-like properties)
 
 Complete End-to-End Example
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following is a complete script that performs both model building and virtual screening:
 
@@ -175,3 +178,14 @@ This workflow will generate the following output:
 - **Virtual screening results**: ``./dataset/abcg2/this_work/screen/``
 
 Congratulations! You should now have successfully completed your first virtual screening task using PyaiVS.
+
+Using PyaiVS for Regression Tasks
+---------------------------------
+
+The **PyaiVS** framework supports not only classification tasks but also regression tasks. In this documentation, we will demonstrate how to use **PyaiVS** for a regression task to predict the **pIC50** value on the **BACE dataset**. The pIC50 value is a measurement of the binding affinity of a compound to a target, commonly used in drug discovery to predict biological activity. The BACE dataset is a benchmark dataset provided by MoleculeNet, which focuses on predicting the activity of BACE-1 inhibitors. The target value for each compound in this dataset is its pIC50 value. The goal of this task is to predict the pIC50 value given the molecular structure (SMILES representation).
+
+Preparing the Data
+^^^^^^^^^^^^^^^^^^
+
+The BACE dataset contains the SMILES representation of compounds and their corresponding pIC50 values. The data format is as follows:
+
