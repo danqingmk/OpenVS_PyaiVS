@@ -1,0 +1,2 @@
+type,rmse,r2,mae,model,des,split
+te,0.7489568157906485,0.6821132951481527,0.5492580494318581,SVM,MACCS,random
