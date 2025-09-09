@@ -209,8 +209,8 @@ Training the Regression Model
 
     # Step 1: Train the model and optimize hyperparameters
     best_settings = model_bulid.running(
-        './dataset/example_reg.csv',    # Path to the input data
-        out_dir='./out_reg',            # Output directory to save trained models
+        './dataset/bace_reg.csv',       # Path to the input data
+        out_dir='./dataset/bace_reg/out_file',            # Output directory to save trained models
         split=["random"],               # Data splitting method (here we use random)
         model=["SVM"],                  # Models to use (supports SVM, XGBoost, Random Forest, etc.)
         FP=["MACCS"],                   # Molecular fingerprints (here we use MACCS)
@@ -235,7 +235,7 @@ Once the model is trained and evaluated, you can use the trained model to screen
         best_settings=best_settings,                     # Pass the trained model configuration
         screen_file="./database/compounds_to_screen.csv",   # Path to the compound library to be screened
         smiles_col="smiles",                             # SMILES column name
-        output_file="./result/result_svm_maccs_random_rmse_reg.csv",  # Output file name
+        output_file="./dataset/bace_reg/result/result_svm_maccs_random_rmse_reg.csv",  # Output file name
         task_type="reg"                                  # Specify as a regression task
     )
 
